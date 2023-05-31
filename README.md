@@ -31,7 +31,7 @@ if UPLOAD_PROVIDER == "googledrive":
 
     GOOGLE_ROOT_PATH: str = empty_str_cast(config_ini["uploads"]["GOOGLE_ROOT_PATH"], default='/CTFd')
 
-    GOOGLE_SHARED_FOLDER_ID: str = empty_str_cast(config_ini["uploads"]["GOOGLE_ROOT_PATH"], default=None)
+    GOOGLE_SHARED_FOLDER_ID: str = empty_str_cast(config_ini["uploads"]["GOOGLE_SHARED_FOLDER_ID"], default=None)
 ```
 
 - `UPLOAD_PROVIDER` set it to "googledrive" to use this plugin.

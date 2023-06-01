@@ -77,7 +77,10 @@ class GoogleDriveUploader(BaseUploader):
 
     def store(self, fileobj, filename):
         file_metadata = {"name": filename, "parents": [self.root_path_id]}
-        media = MediaIoBaseUpload(fileobj, mimetype=fileobj.mimetype)
+        mimetype = (
+            "application/octet-stream" if not fileobj.mimetype else fileobj.mimetype
+        )  # According to https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
+        media = MediaIoBaseUpload(fileobj, mimetype=mimetype)
         uploaded_file = (
             self.service.files()
             .create(body=file_metadata, media_body=media, fields="id")
